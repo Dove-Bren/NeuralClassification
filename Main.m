@@ -9,10 +9,11 @@ function [ test_vector ] = Main( input_args )
     WeightMatrixTwo = Data(BatchTwo);
     WeightMatrixThree = Data(BatchThree);
     %Pass Weight Matrix and Vector to Hamming Function
-    %HammingVector = Hamming(WeightMatrixOne, test_vector)
+    HammingVector = hamming(test_vector, WeightMatrixOne)
     %Pass Hamming Vector to MaxNet Function
-    %ResultIndex = maxNet(HammingVector)
-    %Interpret Results
+    ResultIndex = maxNet(HammingVector)
+    %Grab index (a column) of the Weight Matrix
+    fprintf(WeightMatrixOne(:,ResultIndex));
     
 end
 
