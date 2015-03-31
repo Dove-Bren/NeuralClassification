@@ -2,4 +2,4 @@
 !*.m
 !*.jpg
 !.gitignore
-!proj2out
+!proj2out/
