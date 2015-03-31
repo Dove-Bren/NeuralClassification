@@ -10,7 +10,7 @@ function output=vectorization(input)
         return;
     else
         olddir = pwd;
-        cd(direct);
+        cd(input);
     
         files = dir('*.jpg');
         
