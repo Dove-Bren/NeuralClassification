@@ -1,10 +1,36 @@
-function output=vectorization(InputMatrix)
-    i = 0;
-    [w,h] = size(InputMatrix);
+function output=vectorization(input)
     
-    %init Matrix for super fast speeds omg
-    output = zeros(w,h);
+
+    if (~isdir(input))
+        %assume its a single file name
+        fprintf('Processing file: %s\n', str(input));
+        img = polarize(input);
+        output = img(:);
+        output = output';
+        return;
+    else
+        olddir = pwd;
+        cd(direct);
     
+        files = dir('*.jpg');
+        
+        %init empty matrix
+        output = zeros(
+        for i=1:length(files)
+            filename = files(i).name;
+            fprintf('Processing file: %s\n', filename);
+            img = polarize(filename);
+            [path, name, ext] = fileparts(filename);
+            imwrite(img, strcat(name,'_polarized',ext));
+        end
+    end
+    
+    
+    
+    
+    
+    cd(olddir);
+
     %iterate through all files in the passed matrix
     while (i < h)
         file = InputMatrix(i + 1, 1);
