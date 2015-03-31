@@ -15,39 +15,30 @@ function output=vectorization(input)
         files = dir('*.jpg');
         
         %init empty matrix
-        output = zeros(
+        output = zeros(307200, length(files));
         for i=1:length(files)
             filename = files(i).name;
             fprintf('Processing file: %s\n', filename);
+            
+            %polarize the image
             img = polarize(filename);
-            [path, name, ext] = fileparts(filename);
-            imwrite(img, strcat(name,'_polarized',ext));
+            
+             %get image as a 1 x n vector
+            vect = img(:);
+
+            %transpose so it's a column vector
+            vect = vect';
+
+            %set the i'th COL to be the same as our vector
+            output(:,i) = vect;
+            i = i + 1;
+            
         end
     end
     
-    
-    
-    
-    
+    %return to the old directory
     cd(olddir);
 
-    %iterate through all files in the passed matrix
-    while (i < h)
-        file = InputMatrix(i + 1, 1);
-        %polarize each image
-        fprintf('%s | ', file);
-        img = polarize(file);
-        
-        %get image as a 1 x n vector
-        vect = img(:);
-        
-        %transpose so it's a column vector
-        vect = vect';
-        
-        %set the i'th COL to be the same as our vector
-        output(:,i) = vect;
-        i = i + 1;
-    end
 end
 
 function output=polarize(img)
