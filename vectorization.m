@@ -3,7 +3,7 @@ function output=vectorization(input)
 
     if (~isdir(input))
         %assume its a single file name
-        fprintf('Processing file: %s\n', str(input));
+        fprintf('Processing file: %s\n', input);
         img = polarize(input);
         output = img(:);
         output = output';
