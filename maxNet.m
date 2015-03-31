@@ -1,6 +1,11 @@
 function index = maxNet( input_vector )
-%MAXNET Summary of this function goes here
-%   Determine Epsilon (E)
+%MAXNET This function reduces all members of a vector
+%until one member is not a positive number. The index
+%of this member is returned.
+
+    %Determine Epsilon (E)
+    %Will be zero if there are already zeros in the
+    %vector.
     E = min(input_vector);
     %Find size of vector
     size = length(input_vector);
