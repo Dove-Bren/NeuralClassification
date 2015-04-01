@@ -32,7 +32,7 @@ function output=Weight(input)
    output= threshhold(output); %threshhold the avg
    %output= (2*output) - 1;
    
-    
+   cd(olddir); 
 end
     
     
