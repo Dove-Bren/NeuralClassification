@@ -2,9 +2,9 @@ function output=Weight(input)
 
     if (~isdir(input))
         %assume its a single file name
-        fprintf('Processing file: %s\n', str(input));
+        fprintf('Processing file: %s\n', input);
         img = polarize(input);
-        output = img;
+        output = img(:);
         return;
     else
         olddir = pwd;
@@ -13,15 +13,16 @@ function output=Weight(input)
         files = dir('*.jpg');
         
         %init empty matrix
-        output = zeros(48, 64)
+        output = zeros(3072, 1)
         for i=1:length(files)
             filename = files(i).name;
             fprintf('Processing file: %s\n', filename);
             
             %polarize the image
             img = polarize(filename);
+            vect = img(:);
             %img matrix is added to output matrix
-            output= (img .* img) + output;
+            output= (vect .* vect) + output;
             %i=i+1;
         end
     end
@@ -29,8 +30,9 @@ function output=Weight(input)
    output= output/i;
    output=output*148;  %skews values for proper threshhold
    output= threshhold(output, 127); %threshhold the avg
-   %output= (2*output) - 1;
+   output= (2*output) - 1;
    
+   %output = output(:);
    cd(olddir); 
 end
     

@@ -5,7 +5,7 @@ function output=ham(inputmatrix)
     output = zeros(h, h);
     
     for i=1:w
-       output = output + getWeight(inputmatrix(:, i))
+       output = output + getWeight(inputmatrix(:, i));
     end
     
     %go through and zero out the diagonal
