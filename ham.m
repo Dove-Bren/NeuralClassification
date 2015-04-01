@@ -12,7 +12,6 @@ function output=ham(inputmatrix)
        output(i,i) = 0;
     end
     
-    
 end
 
 function weightMatrix = getWeight(inputVector)
