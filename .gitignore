@@ -1,5 +1,4 @@
-*
-!*.m
-!*.jpg
-!.gitignore
-!.tex
+*.aux
+*.pdf
+*.log
+*.png
