@@ -4,7 +4,7 @@ function output_matrix = bam( input_vector, centroid_matrix )
     %This function applies a Bidirectional Associative Memory
     %Algorithm
     WeightMatrix;
-    [columns, rows] = size(bam);
+    [columns, rows] = size(centroid_matrix);
     %Find weights per matrix and find sum
     for col=1:columns
         tmpMatrix = col * input_vector;
