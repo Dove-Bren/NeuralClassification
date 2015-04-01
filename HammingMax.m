@@ -1,4 +1,4 @@
-function output=hamming(input)
+function output=HammingMax(input)
     
 
     if (~isdir(input))
