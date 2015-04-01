@@ -11,5 +11,3 @@ Y_layer_output = centroid_vector * input_vector;
 %Put the Y output back into a transposed weight vector
 %This is to get back out stored output
 output_vector = Y_layer_output * centroid_trans;
-end
-
