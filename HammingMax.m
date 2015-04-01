@@ -1,9 +1,9 @@
-function output=vectorization(input)
+function output=hamming(input)
     
 
     if (~isdir(input))
         %assume its a single file name
-        fprintf('Processing file: %s\n', str(input));
+        fprintf('Processing file: %s\n', input);
         img = polarize(input);
         output = img(:);
         output = output';
@@ -65,7 +65,7 @@ function output=threshhold(InputMatrix)
     for i=1:w
     for j=1:h
        if (InputMatrix(i,j) < 128)
-          output(i,j) = 0;
+          output(i,j) = -1;
        else
            output(i,j) = 1;
        end

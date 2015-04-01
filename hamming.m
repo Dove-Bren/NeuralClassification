@@ -14,3 +14,4 @@ for i= 1:w
     %stores hammingdist in output
     output(i)= hammingDist(a,b);
 end
+
