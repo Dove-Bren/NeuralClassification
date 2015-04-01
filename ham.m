@@ -1,5 +1,5 @@
 %Expects a matrix with each COLUMN being a centroid
-function output=bam(inputmatrix)
+function output=ham(inputmatrix)
     [w,h] = size(inputmatrix(:, 1));
     output = zeros(h, h);
     
