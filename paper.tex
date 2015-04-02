@@ -57,13 +57,22 @@ what we did ended up working.
 
 \section{Bidirection Associative Memory (BAM)}
 
-\subsection{Image Encoding}
+\subsection{Encoding}
+\subsubsection{Images}
 All images being imported into BAM are required to be in a JPG format. These
 images are then imported, resized into a standard format, and then polarized.
 Each polarized image is then translated into a single dimensional vector.
 Each 'class' of images are grouped together column wise to create a centroid
 matrix.
 
+\subsubsection{Classifications}
+The classifications used by BAM were encoded as orthogoal vectors of length 6.
+Each class 'supersection' had a total of 3 classes. The animal supersection
+includes Dogs, Elephants, and Giraffes. The Plane supersection includes Biplanes,
+Jets, and Airbuses. Finally the Marine supersection includes Ships, Submarines,
+and Whales. Each supersection is treated separately. The encodings for Animals
+are used again in Planes and Marines. This was to make the classification
+encodings as simple yet distant as possible.
 \subsection{Performance}
 The Bidirectional Associative Memory implementation performed rather poorly.
 Most of the associations were directed towards a specific centroid, resulting
@@ -107,15 +116,17 @@ correct classifications. Although it does seem that BAM attempted to describe
 everything as either a submarine or a whale.
 
 \subsection{Sensitivity}
-This section is about how badly noise and the size disrupted our accuracy
+Noise significantly disrupted the creation of the centroids in our Project.
+As a result we removed all excessive details and attempted to leave just
+the pure outlines. Of course this also may have made our centroid to being
+too sanitied and noisy images would be more likely to be misclassified.
 
 \subsection{Comments}
-It says "your own observation and conclusions about the experiment."
-I'm thinking we talk generally about how it did (like a conclusion) and how
-what we did ended up working.
-
-
-
+BAM performed rather poorly. It appeared that BAM favored a single class when
+attempting to classify. However I believe this is a result of our encoding 
+scheme. If we had made our own outlines our network could have performed 
+better. Larger sizes could also give some accuracy in exchange for computational
+power. 
 
 \section{LVQ}
 Our LVQ network was created using the Neural Net toolkit for Matlab. We selected a hidden-layer size of [2 * n] to allow the target classes to be created with little room for error in the way of dying centroids based on the order of training. Making use of the built-in training of the toolkit, we simply constructed an input matrix consisting of all of our outlines for each group and made target vectors to use with them. 
@@ -151,7 +162,7 @@ Jonathan was tasked with the Hamming/Max section. He also was in charge of repor
 
 \subsubsection{Project Presentation}
 NOTHING HE DID NOTHING 0 percent FOR HIM....DAMN YOU SKYLER
-
+SKYLER, SKYYYYLLLLEERRRRR, SKYLLLLERRR NOOOOOOOOOOOOOOOOOOOOO
 \subsection{Skyler Manzanares}
 
 \subsubsection{Programming}
