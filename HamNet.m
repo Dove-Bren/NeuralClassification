@@ -56,6 +56,7 @@ function output = HamNet(centroidMatrix, inputVector, delta)
     hammingIndex = maxNet(hammingVect);
     
     output = centroidMatrix(:, hammingIndex);
+    fprintf('Converged in %d iterations.\n', index);
 end
 
 function output=threshhold(InputMatrix)
