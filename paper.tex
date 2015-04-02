@@ -133,7 +133,9 @@ Our LVQ network was created using the Neural Net toolkit for Matlab. We selected
 Images were encoded by simply importaing the RGB map, grayscaling, and converting the grayscale 0-255 to -1 and 1 based on a threshold (taken to be 127). These images were also resized to the global size of 64 x 48. The resultant images were those that were thrown into the input matrix and used to train the lvq network.
 
 \subsection{Performance}
-Our LVQ had some pretty good performance but also some poor performance.  When testing animals against eachother (dogs, elephants, and giraffes) the network maintained a fairly consistent classification.  40
+Our LVQ had some pretty good performance but also some poor performance.  When testing animals against eachother (dogs, elephants, and giraffes) the network maintained a fairly consistent classification.  It returned 21\% false negatives by misclassifying 4 dogs and 2 elephants, all as giraffes.  However the other 79\% of animals were correctly classified.  Aircraft were a little trickier.  With 66\% overall correct classification, most aircraft were classified as Jetfighters. All ten jet fighters were correctly classified and 9 passenger aircraft and biplanes misclassified.  Sea-fareing objects were not as great.  Not a single image was classified as a ship.  However, 70\% of whales were correctly classified and all of the submarines were correctly classified.
+\begin{itemize}
+\end{itemize}
 
 \subsection{Sensitivity}
 Being a feed-back network, the LVQ did fairly well to adapt to small amounts of noise. Because the centroids themselves had noise, the LVQ did the best overall out of all implementations. Being able to try over and over to get the actual centroid from a distorted image really helped aleviate a lot of the problems that came with the noise.
