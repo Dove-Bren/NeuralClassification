@@ -6,27 +6,22 @@ function output_vector = bam( input_vector, centroid_matrix, class_matrix)
     %This is the X layer of neurons
     WeightMatrix = bam_weight(class_matrix, centroid_matrix);
     %The Y Layer association:
-    Y_classification = input_vector * WeightMatrix;
-    output_vector = Y_classification;
+    Y_association = input_vector * WeightMatrix;
+    return Y_association
 end
 
 %Returns the X association vector. This is done by multiplying Y or our
 %classification Vector by our Weight Matrix. In otherwords, we enter
 %"Giraffe" and this Matrix will return what it thinks a Giraffe is.
 %bamT(input_vector, centroid_matrix, class_matrix)
-%class_vector - This is the classification vector.
+%input_vector - This is the classification vector.
 %centroid_matrix - This is the cntroid matrix containing all of the defined
 %               crentoids. Each individual centroid must be aligned
 %               verticaly in order for this function to return properly.
-%class_matrix - This matrix stores all of our classificiations (e.g. what
-%               the input is to be associated with). These classifications
-%               MUST be aligned horizontally!
-function output_vector = bamT( class_vector, centroid_matrix, class_matrix)
+%class_matrix
+function output_vector = bamT( input_vector, centroid_matrix, class_matrix)
     %This is the Y layer of neurons
     WeightMatrix = bam_weight_T(class_matrix, centroid_matrix);
-    %X_association is what BAM associates with a classification.
-    X_association = class_vector * WeightMatrix;
-    output_vector = X_association.
 end
 
 %Contructs a Weight Matrix based upon an input vector and a given weight
@@ -76,9 +71,4 @@ function output_matrix = bam_weight_T( input_vector, class_matrix)
     end
     %Return the created Weight Matrix
     output_matrix = WeightMatrix;
-end
-
-%This function will create a centroid matrix with 3 centroids
-function centroid = centroid_matrix(centroid_one, centroid_two, centroid_three)
-    centroid = [centroid_one, centroid_two, centroid_three];
 end
