@@ -73,6 +73,7 @@ Jets, and Airbuses. Finally the Marine supersection includes Ships, Submarines,
 and Whales. Each supersection is treated separately. The encodings for Animals
 are used again in Planes and Marines. This was to make the classification
 encodings as simple yet distant as possible.
+
 \subsection{Performance}
 The Bidirectional Associative Memory implementation performed rather poorly.
 Most of the associations were directed towards a specific centroid, resulting
@@ -114,6 +115,13 @@ as dogs. For planes the network had more diverse attempts to classify each
 object, although incorrectly. The marine results showed the most diverse and
 correct classifications. Although it does seem that BAM attempted to describe
 everything as either a submarine or a whale.
+
+These errors are likely due to bad encoding. Our group noticed that large
+images with thin outlines lost information when being resized to a smaller 
+image. Also most of our outlines were collected from the internet. These
+outlines were incredibly diverse and perhaps the details of each image were
+simply 'drowned' out in the diversity of the images. If we standardized our 
+input we would have likely seen better results.
 
 \subsection{Sensitivity}
 Noise significantly disrupted the creation of the centroids in our Project.
