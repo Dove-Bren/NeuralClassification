@@ -76,9 +76,9 @@ what we did ended up working.
 
 
 \section{LVQ}
-
+Our LVQ network was created using the Neural Net toolkit for Matlab. We selected a hidden-layer size of [2 * n] to allow the target classes to be created with little room for error in the way of dying centroids based on the order of training. Making use of the built-in training of the toolkit, we simply constructed an input matrix consisting of all of our outlines for each group and made target vectors to use with them. 
 \subsection{Image Encoding}
-The image encoding... blah blah. Type here
+Images were encoded by simply importaing the RGB map, grayscaling, and converting the grayscale 0-255 to -1 and 1 based on a threshold (taken to be 127). These images were also resized to the global size of 64 x 48. The resultant images were those that were thrown into the input matrix and used to train the lvq network.
 
 \subsection{Performance}
 Here is where we need to talk about how long it took and how good it was. We
