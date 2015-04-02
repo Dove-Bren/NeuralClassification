@@ -51,7 +51,8 @@ function output = HamNet(centroidMatrix, inputVector, delta)
     %We use a hamming function here even though it's not conventionally
     %part of the network because this is soft computing and classification
     %can be iffy
-    hammingVect = hamming(oldIn', centroidMatrix);
+    hammingVect = hamming(oldIn', centroidMatrix)
+    pause;
     
     hammingIndex = maxNet(hammingVect);
     

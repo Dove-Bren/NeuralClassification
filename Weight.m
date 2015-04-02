@@ -5,6 +5,7 @@ function output=Weight(input)
         fprintf('Processing file: %s\n', input);
         img = polarize(input);
         output = img(:);
+        output= -((2*output) - 1);
         return;
     else
         olddir = pwd;
@@ -30,7 +31,7 @@ function output=Weight(input)
    output= output/i;
    output=output*148;  %skews values for proper threshhold
    output= threshhold(output, 127); %threshhold the avg
-   output= (2*output) - 1;
+   output= -((2*output) - 1);
    
    %output = output(:);
    cd(olddir); 
