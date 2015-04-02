@@ -138,9 +138,60 @@ Images were encoded by simply importaing the RGB map, grayscaling, and convertin
 
 \subsection{Performance}
 Our LVQ had some pretty good performance but also some poor performance.  When testing animals against eachother (dogs, elephants, and giraffes) the network maintained a fairly consistent classification.  It returned 21\% false negatives by misclassifying 4 dogs and 2 elephants, all as giraffes.  However the other 79\% of animals were correctly classified.  Aircraft were a little trickier.  With 66\% overall correct classification, most aircraft were classified as Jetfighters. All ten jet fighters were correctly classified and 9 passenger aircraft and biplanes misclassified.  Sea-fareing objects were not as great.  Not a single image was classified as a ship.  However, 70\% of whales were correctly classified and all of the submarines were correctly classified.
+Animal Results:
 \begin{itemize}
+    \item Dog:
+    \begin{itemize}
+        \item 6 Correctly Classified
+        \item 4 Incorrectly Classified
+        \end{itemize}
+    \item Elephant:
+    \begin{itemize}
+        \item 8 Correctly Classified
+        \item 2 Incorrectly Classified
+        \end{itemize}
+   \item Giraffe:
+   \begin{itemize}
+        \item 9 Correctly Classified
+        \item 0 Correctly Classifed
+        \end{itemize}
 \end{itemize}
-
+Plane Results:
+\begin{itemize}
+    \item Biplane:
+    \begin{itemize}
+        \item 7 Correctly Classified
+        \item 3 Incorrectly Classified
+        \end{itemize}
+    \item Jet Results:
+    \begin{itemize}
+        \item 10 Correctly Classified
+        \item 0 Incorrectly Classified
+        \end{itemize}
+    \item Passenger Results:
+    \begin{itemize}
+        \item 1 Correctly Classified
+        \item 6 Incorrectly Classified
+        \end{itemize}
+\end{itemize}
+Marine Results:
+\begin{itemize}
+    \item Ships:
+    \begin{itemize}
+        \item 0 Correctly Classified
+        \item 5 Incorrectly Classified
+        \end{itemize}
+    \item Submarine Results:
+    \begin{itemize}
+        \item 8 Correctly Classified
+        \item 0 Incorrectly Classified
+        \end{itemize}
+    \item Whale Results:
+    \begin{itemize}
+        \item 7 Correctly Classified
+        \item 3 Incorrectly Classified
+        \end{itemize}
+\end{itemize}        
 \subsection{Sensitivity}
 Being a feed-back network, the LVQ did fairly well to adapt to small amounts of noise. Because the centroids themselves had noise, the LVQ did the best overall out of all implementations. Being able to try over and over to get the actual centroid from a distorted image really helped aleviate a lot of the problems that came with the noise.
 
