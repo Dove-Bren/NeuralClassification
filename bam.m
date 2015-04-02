@@ -1,6 +1,15 @@
-%   This Function operates correctly when the input_vector is horizontal
-%and the centroid_matrix is arranged vertically.
-%   This function will return the created weight matrix;
+%Contructs a Weight Matrix based upon an input vector and a given weight
+%matrix.
+%bam(input_vector, centroid_matrix)
+%input_vector - This is the input vector (what is being tested) this is
+%               required to be horizonally aligned in order for 
+%               this function to return a matrix. Otherwise this 
+%               WILL RETURN A SCALAR!
+%centroid_matrix - This is the centroid matrix containing all of the
+%               defined centroids. Each individual centroid must be aligned
+%               vertically in order for this function to return a matrix.
+%This function uses the Bidirectional Associated Memory algorithm.
+%Specificially, this function returns the constructed weight matrix.
 function output_matrix = bam( input_vector, centroid_matrix )
     %This function applies a Bidirectional Associative Memory
     %Algorithm
@@ -15,9 +24,18 @@ function output_matrix = bam( input_vector, centroid_matrix )
     output_matrix = WeightMatrix;
 end
 
-%   This function operates correctly when the input_vector is horizontal
-%and the centroid_matrix is arranged vertically
-%   This function will return the TRANSPOSED weight matrix.
+%Contructs a TRANSPOSED Weight Matrix based upon an input vector and a 
+%given weight matrix.
+%bam(input_vector, centroid_matrix)
+%input_vector - This is the input vector (what is being tested) this is
+%               required to be horizonally aligned in order for 
+%               this function to return a matrix. Otherwise this 
+%               WILL RETURN A SCALAR!
+%centroid_matrix - This is the centroid matrix containing all of the
+%               defined centroids. Each individual centroid must be aligned
+%               vertically in order for this function to return a matrix.
+%This function uses the Bidirectional Associated Memory algorithm.
+%Specificially, this function returns the constructed weight matrix.
 function output_matrix = bam_transposed( input_vector, centroid_matrix)
     WeightMatrix;
     centroid_matrix = centroid_matrix';
