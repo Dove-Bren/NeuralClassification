@@ -13,10 +13,16 @@
 \section{Overview}
 
 \section{Hopfield Autoassociative Memory Network}
-Our hopfield network was terrific! Type stuff here
+The HAM network we constructed worked by creating large symmetric weight-matrices from image centroids (see Image Encoding subsection) to classify input vectors. The network is feed-back, meaning it feeds the resultant output vector back into itself as input until the network no longer exhibits any change on the vector. 
+
+We noticed that our HAM, while moving the input vector much closer to the proper centroid vector, was not able to make concrete classifications. Because this is the realm of soft computing, we decided the return the classificaton that was closest to the convergent vector. To decide which centroid was closest, we actually plugged the final resultant vector from the HAM into our Hamming/MAX network. This allowed us to make the short jump to the nearest centroid.
 
 \subsection{Image Encoding}
-the image encoding blah blah. Type here
+Images were first converted from rgb to grayscale, and then run through a threshold function to polarize the images. These images were then fed into a function that took the average of each pixel value across all input images and returned the resulting centroid.
+
+This same encoding and centroid-generating technique was used in all other networks except the LVQ with only slight modifications.
+
+Images, when being polarized, were scaled down to a universal size of 64 x 48. This meant our centroids were also 64 x 48 matrices as well.
 
 \subsection{Performance}
 Here is where we need to talk about how long it took and how good it was. We
@@ -28,9 +34,7 @@ The hopfield was incredibly resilient to noise. This was most likely due to the 
 When deciding on values for delta, we originally imagined a value of about .1 would be best. Upon testing, we found very quickly that much smaller delta values worked better, as the HAM was converging very quickly.
 
 \subsection{Comments}
-It says "your own observation and conclusions about the experiment."
-I'm thinking we talk generally about how it did (like a conclusion) and how
-what we did ended up working.
+Surprisingly the HAM was the second easiest networks to implement. We found that the implementation of it ended up being suprisingly intuitive. Even though we were using large matrices, the 'training' time (creation of weight matrix) was incredibly small (small enough we didn't record it) and classification times were even faster.
 
 
 
