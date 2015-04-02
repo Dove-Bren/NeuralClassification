@@ -6,8 +6,23 @@ function output_vector = bam( input_vector, centroid_matrix, class_matrix)
     %This is the X layer of neurons
     WeightMatrix = bam_weight(class_matrix, centroid_matrix);
     %The Y Layer association:
-    Y_classification = input_vector * WeightMatrix;
-    output_vector = Y_classification;
+    
+    %fprintf('Finding Y classification Vector\n');
+    %fprintf('Input Vector Length = %d\n', length(input_vector));
+    %fprintf('Weight: C = %d, R = %d\n', wCol, wRow);
+    Y_classification = input_vector' * WeightMatrix;
+    Y_length = length(Y_classification);
+    output_vector = [Y_length];
+    for i=1:Y_length
+       %fprintf('%d, ', Y_classification(i));
+       if (Y_classification(i) > 0)
+          output_vector(i) = 1;
+       elseif (Y_classification(i) < 0)
+           output_vector(i) = -1;
+       else
+           output_vector(i) = 0;
+       end
+    end
 end
 
 %Returns the X association vector. This is done by multiplying Y or our
@@ -26,7 +41,7 @@ function output_vector = bamT( class_vector, centroid_matrix, class_matrix)
     WeightMatrix = bam_weight_T(class_matrix, centroid_matrix);
     %X_association is what BAM associates with a classification.
     X_association = class_vector * WeightMatrix;
-    output_vector = X_association.
+    output_vector = X_association;
 end
 
 %Contructs a Weight Matrix based upon an input vector and a given weight
@@ -43,11 +58,17 @@ end
 function output_matrix = bam_weight( class_matrix, centroid_matrix )
     %This function applies a Bidirectional Associative Memory
     %Algorithm
-    WeightMatrix;
-    [columns, rows] = size(centroid_matrix);
+    [classCol, classRow, d] = size(class_matrix);
+    [columns, rows, d] = size(centroid_matrix);
+    WeightMatrix = zeros(columns, classRow);
+    [weightColumns, weightRows, d] = size(WeightMatrix);
     %Find weights per matrix and find sum
-    for col=1:columns
-        tmpMatrix = centroidMatrix(:,col) * class_matrix(col,:);
+    %fprintf('Contructing Weight Matrix...\n');
+    %fprintf('Weight: C = %d, R = %d\n', weightColumns, weightRows);
+    for col=1:classCol
+        tmpMatrix = centroid_matrix(:,col) * class_matrix(col,:);
+        [tmpColumns, tmpRows] = size(tmpMatrix);
+        %fprintf('Tmp: C = %d, R = %d\n', tmpColumns, tmpRows);
         WeightMatrix = WeightMatrix + tmpMatrix;
     end
     %Return the created Weight Matrix
@@ -71,14 +92,9 @@ function output_matrix = bam_weight_T( input_vector, class_matrix)
     [columns, rows] = size(centroid_matrix);
     %Find weights per matrix and find sum
     for col=1:columns
-       tmpMatrix = centroidMatrix(:,col) * class_matrix(col,:);
+       tmpMatrix = centroid_matrix(:,col) * class_matrix(col,:);
        WeightMatrix = WeightMatrix + tmpMatrix;
     end
     %Return the created Weight Matrix
     output_matrix = WeightMatrix;
-end
-
-%This function will create a centroid matrix with 3 centroids
-function centroid = centroid_matrix(centroid_one, centroid_two, centroid_three)
-    centroid = [centroid_one, centroid_two, centroid_three];
 end
