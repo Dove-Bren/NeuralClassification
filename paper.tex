@@ -23,7 +23,9 @@ Here is where we need to talk about how long it took and how good it was. We
 also might want to mention the size limitations this introduced!
 
 \subsection{Sensitivity}
-This section is about how badly noise and the size disrupted our accuracy
+The hopfield was incredibly resilient to noise. This was most likely due to the fact that it was a feed-back network, so noise was able to be gradually phased out. Because our method of creating centroids created noise in the centroids, the hopfield did pretty good in regards to eliminating the noise.
+
+When deciding on values for delta, we originally imagined a value of about .1 would be best. Upon testing, we found very quickly that much smaller delta values worked better, as the HAM was converging very quickly.
 
 \subsection{Comments}
 It says "your own observation and conclusions about the experiment."
