@@ -16,7 +16,7 @@
 Our hopfield network was terrific! Type stuff here
 
 \subsection{Image Encoding}
-The image encoding... blah blah. Type here
+the image encoding blah blah. Type here
 
 \subsection{Performance}
 Here is where we need to talk about how long it took and how good it was. We
@@ -41,17 +41,14 @@ The Hamming-Max was fairly straight forward to construct.  We first created the 
 Deciding how to encode our images was a bit tricky.  We played with a few different ways of obtaining image outlines and decided for this network simply finding images already in outline form would be best.  We removed inner detail from these outlines and ran them through a program we wrote.  First, the images are resized so that they are all one standard size,  the images are then grayscaled and run through a threshhold function so that a clear outline of black on white is present.  To establish the prototypes for our weight matrix, we added the values of each representative image matrix to eachother, then averaged the values and processed the result as before.  We adjusted our threshhold function to maintain clarity.  We found that visually, too small a size diminshed image definition, while too large was time and resource intensive and lacked definitive shape for the prototype matrix.
 
 \subsection{Performance}
-Here is where we need to talk about how long it took and how good it was. We
-also might want to mention the size limitations this introduced!
-
+The Hamming/MAX did an excellent job when classifying animals. Both the aquatic classes and the planes had classifications that were completely incorrect, and another that was completely correct. We attribute this half-sided success to the images we selected for testing and for centroid-generation; the animals were distinct enough that we could tell the difference between the centroids when viewing them. The planes were a mess of lines due to poor image selection. The ships had very sporatic images used to train, and the resultant centroid was a mess. 
 \subsection{Sensitivity}
-This section is about how badly noise and the size disrupted our accuracy
+This network was very sensitive to noise. Because it was feed-forward and used hamming distance between vectors, the most important thing was literally how many pixels matched up. Because of this, noise was very detrimental to classification accuracy.
 
 \subsection{Comments}
-It says "your own observation and conclusions about the experiment."
-I'm thinking we talk generally about how it did (like a conclusion) and how
-what we did ended up working.
+We constructed out Hamming/MAX layer as per instructions of Lab 2. This led us to become extremely confused, as we weren't using a neural network but the linear-algebra equivalent. We didn't really use neurons. We just used applied linear algebra. Regardless, we went forward with the matrix-only implementation and were pretty pleased with the results. 
 
+By far the Hamming/Max was easiest for us to break down and implement.
 
 
 
