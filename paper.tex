@@ -35,10 +35,10 @@ what we did ended up working.
 
 
 \section{Hamming-Max Network}
-The Hamming-Max was fairly straight forward to construct.  We first created the hammingnet portion which was given the input vector and weight matrix.  It computed the hamming distance of the input from each column vector prototype of the weight matrix, storing those values in an output vector, equal in width to the weight matrix.  We then constructed the Maxnet which was given the Hammingnet output as a parameter.  It subtracts 1 from each element until a single zero value is found, declaring it the smallest hamming distance.  This index represents the prototype which is most similar to the input, suggesting the input must be of this classification.
+The Hamming-Max was fairly straight forward to construct.  We first created the hammingnet portion which was given the input vector and weight matrix.  It computed the hamming distance of the input from each column vector prototype of the weight matrix, storing those values in an output vector, equal in width to the weight matrix.  We then constructed the Maxnet which was given the Hammingnet output as a parameter.  It subtracts an epsilon (which we specified as the smallest element in the hamming vector) from each element until a single zero value is found, declaring it the smallest hamming distance.  This index represents the prototype which is most similar to the input, suggesting the input must be of this classification.
 
 \subsection{Image Encoding}
-Deciding how to encode our images was a bit tricky.  We played with a few different ways of obtaining image outlines however, we decided for this network, simply finding images already in outline form would be best.  We removed inner detail from these outlines and ran them through a program we wrote.  First, the images are resized so that they are all one standard size,  the images are then grayscaled and run through a threshhold function so that a clear outline of black on white is present.  To establish the prototypes for our weight matrix, we added the values of each representative image matrix to eachother, then averaged the values and processed the result as before.  We adjusted our threshhold function to maintain clarity.  We found that visually, too small a size diminshed image definition, while too large was time and resource intensive and lacked definitive shape for the prototype matrix.
+Deciding how to encode our images was a bit tricky.  We played with a few different ways of obtaining image outlines and decided for this network simply finding images already in outline form would be best.  We removed inner detail from these outlines and ran them through a program we wrote.  First, the images are resized so that they are all one standard size,  the images are then grayscaled and run through a threshhold function so that a clear outline of black on white is present.  To establish the prototypes for our weight matrix, we added the values of each representative image matrix to eachother, then averaged the values and processed the result as before.  We adjusted our threshhold function to maintain clarity.  We found that visually, too small a size diminshed image definition, while too large was time and resource intensive and lacked definitive shape for the prototype matrix.
 
 \subsection{Performance}
 Here is where we need to talk about how long it took and how good it was. We
@@ -105,15 +105,16 @@ Hamming/Max network and the creation of centroids for the networks based on a
 large number of sample inputs. He was completely responsible for creating the Hamming layer of the Hamming/MAX network, and worked in conjunction with the rest of the team when creating the centroids. 
 
 \subsubsection{Project Report}
-Jonathan was tasked with the Hamming/Max section.
+Jonathan was tasked with the Hamming/Max section. He also was in charge of reporting on the Overview section.
 
 \subsubsection{Project Presentation}
 NOTHING HE DID NOTHING 0 percent FOR HIM....DAMN YOU SKYLER
 
-\subsection{Skyler "Scrub" Manzanares}
+\subsection{Skyler Manzanares}
+
 \subsubsection{Programming}
 Skyler implemented the formatting of centroid images to the weight matrix to be fed into the Hamming/MAX network. He also did extensive work creating the functions that read in and format images. Skyler was also responsible for implementing
-the HAM network.
+the HAM network and the LVQ network.
 
 \subsubsection{Project Report}
 Skyler created the template for the project report and was in charge of the HAM 
@@ -124,11 +125,10 @@ lulz he ain't done a thing.  0\% for you
 
 \subsection{William Fong}
 \subsubsection{Programming}
-William worked to creat the Max layer of the Hamming/Max network and coordinate 
-inputs and outputs of the various layers, summing all components together to create a working Hamming/Max network. William was also in charge of implementing the BAM network.
-
+William worked to create the Max layer of the Hamming/Max network and coordinate 
+inputs and outputs of the various layers, summing all components together to create a working Hamming/Max network. William was also in charge of implementing the BAM network. He also was in charge of testing his BAM network creation.
 \subsubsection{Project Report}
-William was tasked to the BAM section.
+William was tasked to the BAM section and the LVQ analysis section.
 
 \subsubsection{Project Presentation}
 nuthin. no soup for you 

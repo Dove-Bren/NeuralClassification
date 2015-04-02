@@ -14,11 +14,10 @@ function output=Weight(input)
         files = dir('*.jpg');
         
         %init empty matrix
-        output = zeros(3072, 1)
+        output = zeros(3072, 1);
         for i=1:length(files)
             filename = files(i).name;
             fprintf('Processing file: %s\n', filename);
-            
             %polarize the image
             img = polarize(filename);
             vect = img(:);
