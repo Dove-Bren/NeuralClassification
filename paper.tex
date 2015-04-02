@@ -25,8 +25,62 @@ This same encoding and centroid-generating technique was used in all other netwo
 Images, when being polarized, were scaled down to a universal size of 64 x 48. This meant our centroids were also 64 x 48 matrices as well.
 
 \subsection{Performance}
-Here is where we need to talk about how long it took and how good it was. We
-also might want to mention the size limitations this introduced!
+The HAM network worked very well for classifying Animals and sea-craft, but rather poorly for airplanes.  80\% of dogs were classified correctly along with every giraffe and all but one elephant.  All submarines and all ships were also classified correctly, however, whales were pretty evenly classified as either a whale, submarine, or ship.  Airplanes however were not handled well at all.  Likely due to ambiguity in passenger airline encoding, all but one airplane image was classified as a passenger plane.  While this means that all passenger planes were correctly classified, no jet fighters were correct.  Nine of the ten biplanes were also classified as passenger craft, however the one shining nugget was the remaining biplane which was correctly classified as such.  It must have really looked like a biplane as it was the only aircraft that wasn't classified as a passenger airline.
+
+Animal Results:
+\begin{itemize}
+    \item Dog:
+    \begin{itemize}
+        \item 8 Correctly Classified
+        \item 2 Incorrectly Classified
+        \end{itemize}
+    \item Elephant:
+    \begin{itemize}
+        \item 9 Correctly Classified
+        \item 1 Incorrectly Classified
+        \end{itemize}
+   \item Giraffe:
+   \begin{itemize}
+        \item 9 Correctly Classified
+        \item 0 Correctly Classifed
+        \end{itemize}
+\end{itemize}
+Plane Results:
+\begin{itemize}
+    \item Biplane:
+    \begin{itemize}
+        \item 1 Correctly Classified
+        \item 9 Incorrectly Classified
+        \end{itemize}
+    \item Jet Results:
+    \begin{itemize}
+        \item 0 Correctly Classified
+        \item 10 Incorrectly Classified
+        \end{itemize}
+    \item Passenger Results:
+    \begin{itemize}
+        \item 7 Correctly Classified
+        \item 0 Incorrectly Classified
+        \end{itemize}
+\end{itemize}
+Marine Results:
+\begin{itemize}
+    \item Ships:
+    \begin{itemize}
+        \item 5 Correctly Classified
+        \item 0 Incorrectly Classified
+        \end{itemize}
+    \item Submarine Results:
+    \begin{itemize}
+        \item 8 Correctly Classified
+        \item 0 Incorrectly Classified
+        \end{itemize}
+    \item Whale Results:
+    \begin{itemize}
+        \item 3 Correctly Classified
+        \item 7 Incorrectly Classified
+        \end{itemize}
+\end{itemize}        
 
 \subsection{Sensitivity}
 The hopfield was incredibly resilient to noise. This was most likely due to the fact that it was a feed-back network, so noise was able to be gradually phased out. Because our method of creating centroids created noise in the centroids, the hopfield did pretty good in regards to eliminating the noise.
