@@ -58,12 +58,53 @@ what we did ended up working.
 \section{Bidirection Associative Memory (BAM)}
 
 \subsection{Image Encoding}
-The image encoding... blah blah. Type here
+All images being imported into BAM are required to be in a JPG format. These
+images are then imported, resized into a standard format, and then polarized.
+Each polarized image is then translated into a single dimensional vector.
+Each 'class' of images are grouped together column wise to create a centroid
+matrix.
 
 \subsection{Performance}
-Here is where we need to talk about how long it took and how good it was. We
-also might want to mention the size limitations this introduced!
+The Bidirectional Associative Memory implementation performed rather poorly.
+Most of the associations were directed towards a specific centroid, resulting
+in at least 1 'class' performing extremely well. The results of our
+experiment are as follows.
+Animal Results:
+    Dog:
+        7 Correctly Classified
+        3 Incorrectly Classified
+    Elephant:
+        1 Correctly Classified
+        9 Incorrectly Classified
+    Giraffe:
+        0 Correctly Classified
+        9 Correctly Classifed
+Plane Results:
+    Biplane:
+        0 Correctly Classified
+        10 Incorrectly Classified
+    Jet Results:
+        5 Correctly Classified
+        5 Incorrectly Classified
+    Airbus Results:
+        0 Correctly Classified
+        7 Incorrectly Classified
+Marine Results:
+    Ships:
+        0 Correctly Classified
+        5 Incorrectly Classified
+    Submarine Results:
+        8 Correctly Classified
+        0 Incorrectly Classified
+    Whale Results:
+        3 Correctly Classified
+        7 Incorrectly Classified
 
+It seems that the BAM implementation attempted to classify nearly all animals
+as dogs. For planes the network had more diverse attempts to classify each
+object, although incorrectly. The marine results showed the most diverse and
+correct classifications. Although it does seem that BAM attempted to describe
+everything as either a submarine or a whale.
 \subsection{Sensitivity}
 This section is about how badly noise and the size disrupted our accuracy
 
