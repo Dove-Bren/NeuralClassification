@@ -3,32 +3,51 @@ function out = TestBAM( input_args )
     DogFilePath = 'proj2out/i/dog';
     ElepFilePath = 'proj2out/i/elep';
     GirFilePath = 'proj2out/i/girf';
+    
     BiplaneFilePath = 'proj2out/ii/biplanes';
     JetFilePath = 'proj2out/ii/jetfighters';
-    AirbusFilePath = 'proj2out/ii/passengers'
+    AirbusFilePath = 'proj2out/ii/passengers';
+    
+    ShipFilePath = 'proj2out/iii/ships';
+    SubFilePath = 'proj2out/iii/subs';
+    WhaleFilePath = 'proj2out/iii/whales';
     %Define Class Vectors
     DogClass = [1 -1 -1 1 1 -1];
-    BiplaneClass = DogClass
+    BiplaneClass = DogClass'
+    ShipClass = DogClass;
     ElepClass = [1 1 -1 -1 -1 -1];
     JetClass = ElepClass;
+    SubClass = ElepClass;
     GirClass = [1 1 1 -1 1 1];
     AirbusClass = GirClass;
+    WhaleClass = GirClass;
     
     %Define Centroid Matrices
     DogCentroid = Weight(DogFilePath);
     ElepCentroid = Weight(ElepFilePath);
     GirCentroid = Weight(GirFilePath);
+    
     BiplaneCentroid = Weight(BiplaneFilePath);
     JetCentroid = Weight(JetFilePath);
     AirbusCentroid = Weight(AirbusFilePath);
+    
+    ShipCentroid = Weight(ShipFilePath);
+    SubCentroid = Weight(SubFilePath);
+    WhaleCentroid = Weight(WhaleFilePath);
     
     %Get File names
     DogImages = dir('proj2out/i/dog/*jpg');
     ElepImages = dir('proj2out/i/elep/*jpg');
     GirImages = dir('proj2out/i/girf/*jpg');
+    
     BiplaneImages = dir('proj2out/ii/biplanes/*jpg');
     JetImages = dir('proj2out/ii/jetfighters/*jpg');
     AirbusImages = dir('proj2out/ii/passengers/*jpg');
+    
+    ShipImages = dir('proj2out/iii/ships/*jpg');
+    SubImages = dir('proj2out/iii/subs/*jpg');
+    WhaleImages = dir('proj2out/iii/whales/*jpg');
+    
     %Test Dog Images
     AnimalCentroid = centroidMatrix(DogCentroid, ElepCentroid, GirCentroid);
     AnimalClass = classMatrix(DogClass, ElepClass, GirClass);
@@ -46,6 +65,7 @@ function out = TestBAM( input_args )
           DogIncorrect = DogIncorrect + 1;
        end
     end
+    %Test Elephant Images
     ElepCorrect = 0;
     ElepIncorrect = 0;
     for i=1:length(ElepImages)
@@ -60,6 +80,7 @@ function out = TestBAM( input_args )
           ElepIncorrect = ElepIncorrect + 1;
        end
     end
+    %Test Giraffe Images
     GirCorrect = 0;
     GirIncorrect = 0;
     for i=1:length(GirImages)
@@ -75,6 +96,7 @@ function out = TestBAM( input_args )
        end
     end
     
+    %Test Biplane Images
     PlaneCentroid = centroidMatrix(BiplaneCentroid, JetCentroid, AirbusCentroid);
     PlaneClass = classMatrix(DogClass, ElepClass, GirClass);
     BiplaneCorrect = 0;
@@ -91,6 +113,7 @@ function out = TestBAM( input_args )
           BiplaneIncorrect = BiplaneIncorrect + 1;
        end
     end
+    %Test Jet Images
     JetCorrect = 0;
     JetIncorrect = 0;
     for i=1:length(JetImages)
@@ -105,6 +128,7 @@ function out = TestBAM( input_args )
           JetIncorrect = JetIncorrect + 1;
        end
     end
+    %Test Airbus Images
     AirbusCorrect = 0;
     AirbusIncorrect = 0;
     for i=1:length(AirbusImages)
@@ -115,11 +139,57 @@ function out = TestBAM( input_args )
           fprintf('%s was correctly classified!\n', AirbusFile);
           AirbusCorrect = AirbusCorrect + 1;
        else
-          fprintf('%s was misclassified!\n', JetFile);
+          fprintf('%s was misclassified!\n', AirbusFile);
           AirbusIncorrect = AirbusIncorrect + 1;
        end
     end
     
+    MarineCentroid = centroidMatrix(ShipCentroid, SubCentroid, WhaleCentroid);
+    MarineClass = classMatrix(ShipClass, SubClass, WhaleClass);
+    ShipCorrect = 0;
+    ShipIncorrect = 0;
+    for i=1:length(ShipImages)
+       ShipFile = getfield(ShipImages(i), 'name');
+       TestVector = Weight(strcat(ShipFilePath,'/',ShipFile));
+       ResultVector = bam(TestVector, MarineCentroid, MarineClass);
+       if (isequal(ResultVector, ShipClass))
+          fprintf('%s was correctly classified!\n', ShipFile);
+          ShipCorrect = ShipCorrect + 1;
+       else
+          fprintf('%s was misclassified!\n', ShipFile);
+          ShipIncorrect = ShipIncorrect + 1;
+       end
+    end
+    SubCorrect = 0;
+    SubIncorrect = 0;
+    for i=1:length(SubImages)
+       SubFile = getfield(SubImages(i), 'name');
+       TestVector = Weight(strcat(SubFilePath,'/',SubFile));
+       ResultVector = bam(TestVector, MarineCentroid, MarineClass);
+       if (isequal(ResultVector, SubClass))
+          fprintf('%s was correctly classified!\n', SubFile);
+          SubCorrect = SubCorrect + 1;
+       else
+          fprintf('%s was misclassified!\n', SubFile);
+          SubIncorrect = SubIncorrect + 1;
+       end
+    end
+    
+    WhaleCorrect = 0;
+    WhaleIncorrect = 0;
+    for i=1:length(WhaleImages)
+       WhaleFile = getfield(WhaleImages(i), 'name');
+       TestVector = Weight(strcat(WhaleFilePath,'/',WhaleFile));
+       ResultVector = bam(TestVector, MarineCentroid, MarineClass);
+       if (isequal(ResultVector, WhaleClass))
+          fprintf('%s was correctly classified!\n', WhaleFile);
+          WhaleCorrect = WhaleCorrect + 1;
+       else
+          fprintf('%s was misclassified!\n', WhaleFile);
+          WhaleIncorrect = WhaleIncorrect + 1;
+       end
+    end
+
     fprintf('ANIMAL RESULTS:\n');
     fprintf('\tDog results: \n');
     fprintf('\t\t%d Correctly Classified\n', DogCorrect);
@@ -140,6 +210,16 @@ function out = TestBAM( input_args )
     fprintf('\tAirbus Results:\n');
     fprintf('\t\t%d Correctly Classified\n', AirbusCorrect);
     fprintf('\t\t%d Incorrectly Classified\n', AirbusIncorrect);
+    fprintf('MARINE RESULTS\n');
+    fprintf('\tShip Results:\n');
+    fprintf('\t\t%d Correctly Classified\n', ShipCorrect);
+    fprintf('\t\t%d Incorrectly Classified\n', ShipIncorrect);
+    fprintf('\tSubmarine Results:\n');
+    fprintf('\t\t%d Correctly Classified\n', SubCorrect);
+    fprintf('\t\t%d Incorrectly Classified\n', SubIncorrect);
+    fprintf('\tWhale Results:\n');
+    fprintf('\t\t%d Correctly Classified\n', WhaleCorrect);
+    fprintf('\t\t%d Incorrectly Classified\n', WhaleIncorrect);
     out = 0;
 end
 
