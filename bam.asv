@@ -6,8 +6,8 @@ function output_vector = bam( input_vector, centroid_matrix, class_matrix)
     %This is the X layer of neurons
     WeightMatrix = bam_weight(class_matrix, centroid_matrix);
     %The Y Layer association:
-    Y_classification = input_vector * WeightMatrix;
-    output_vector = Y_classification;
+    Y_association = input_vector * WeightMatrix;
+    return Y_association
 end
 
 %Returns the X association vector. This is done by multiplying Y or our
@@ -18,15 +18,10 @@ end
 %centroid_matrix - This is the cntroid matrix containing all of the defined
 %               crentoids. Each individual centroid must be aligned
 %               verticaly in order for this function to return properly.
-%class_matrix - This matrix stores all of our classificiations (e.g. what
-%               the input is to be associated with). These classifications
-%               MUST be aligned horizontally!
+%class_matrix
 function output_vector = bamT( input_vector, centroid_matrix, class_matrix)
     %This is the Y layer of neurons
     WeightMatrix = bam_weight_T(class_matrix, centroid_matrix);
-    %X_association is what BAM associates with a classification.
-    X_association = input_vector * WeightMatrix;
-    output_vector = X_association.
 end
 
 %Contructs a Weight Matrix based upon an input vector and a given weight
