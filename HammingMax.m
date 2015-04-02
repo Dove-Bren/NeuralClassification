@@ -15,7 +15,7 @@ function output=HammingMax(input)
         files = dir('*.jpg');
         
         %init empty matrix
-        output = zeros(307200, length(files));
+        output = zeros(3072, length(files));
         for i=1:length(files)
             filename = files(i).name;
             fprintf('Processing file: %s\n', filename);
@@ -57,7 +57,7 @@ function img=getImage(filename)
 end
 
 function img=resizeImage(imgIn)
-    img=imresize(imgIn, [480, 640]);
+    img=imresize(imgIn, [48, 64]);
 end
 
 function output=threshhold(InputMatrix)
